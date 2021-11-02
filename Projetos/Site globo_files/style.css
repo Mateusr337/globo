@@ -1,0 +1,84 @@
+A {
+  text-decoration: none;
+  color: black;
+}
+body {
+  font-family: "Encode Sans", sans-serif;
+  display: flex;
+  justify-content: center;
+}
+p {
+  margin: 10px auto;
+}
+.logo {
+  height: 50px;
+  width: 1250;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #f5f6f7;
+}
+.seções {
+  height: 30px;
+  width: 1250px;
+  font-size: 15px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #f5f6f7;
+}
+.page {
+  display: flex;
+  justify-content: space-between;
+  width: 1250px;
+}
+.direita {
+  width: 725px;
+}
+.esquerda {
+  width: 725px;
+  border-right: 1px solid #f5f6f7;
+}
+.legenda {
+  font-size: 52px;
+  font-weight: bold;
+  margin: 30px 15px 30px auto;
+  color: #c4160c;
+}
+.subtitulo {
+  height: 50px;
+  margin: auto 15px 30px auto;
+  font-size: 18px;
+  color: #303134;
+  display: flex;
+  align-items: center;
+}
+.texto {
+  font-weight: bold;
+  font-size: 20px;
+}
+.imagens_esquerda {
+  height: 300px;
+  border-top: 1px solid #f5f6f7;
+  margin-right: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.blocos_esquerda {
+  height: 150px;
+  display: flex;
+  align-items: center;
+  width: 193px;
+}
+.imagens_esquerda_textos {
+  height: 300px;
+  border-top: 1px solid #f5f6f7;
+  margin-right: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}

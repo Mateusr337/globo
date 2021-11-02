@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="rest.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Righteous&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="confirmacaoPedido">
+      <div class="titulo negrito">Comfirme seu pedido</div>
+      <div class="prato2">
+        <div class="nomePrato"></div>
+        <div class="valorPrato"></div>
+      </div>
+      <div class="bebida2">
+        <div class="nomeBebida"></div>
+        <div class="valorBebida"></div>
+      </div>
+      <div class="sobremesa2">
+        <div class="nomeSobremesa"></div>
+        <div class="valorSobremesa"></div>
+      </div>
+      <div class="total2">
+        <div class="textoTotal negrito">Total:</div>
+        <div style="display: flex; gap: 10px;">
+          <div>R$</div>
+          <div class="valor2"></div>
+        </div>
+      </div>
+      <div class="pedir negrito" onclick="enviarMensagem()">
+        Tudo certo, pode pedir!
+      </div>
+      <div class="cancelar" onclick="cancelar()">Cancelar</div>
+    </div>
+    <header>
+      <h1>
+        DrivenEats
+      </h1>
+      <h3>
+        Sua comida em 6 min
+      </h3>
+    </header>
+
+    <main>
+      <section>
+        <h2>
+          Primeiro, seu prato
+        </h2>
+        <nav class="prato">
+          <div class="post" onclick="selecionarPrato(this), finalizarpedido()">
+            <img
+              src="https://media.istockphoto.com/photos/hamburger-with-cheese-and-french-fries-picture-id1188412964?k=20&m=1188412964&s=612x612&w=0&h=Ow-uMeygg90_1sxoCz-vh60SQDssmjP06uGXcZ2MzPY="
+              alt=""
+            />
+            <h4 class="nomeitem">Hambúrguer</h4>
+            <div class="descricao">
+              Hambúrguer e <br />
+              batata frita
+            </div>
+            <div class="preco">
+              R$
+              <p class="valor">15,90</p>
+            </div>
+            <div class="check">
+              <ion-icon name="checkmark-outline"></ion-icon>
+            </div>
+          </div>
+
+          <div class="post" onclick="selecionarPrato(this), finalizarpedido()">
+            <img
+              src="https://cptstatic.s3.amazonaws.com/imagens/enviadas/materias/materia25349/10-de-julho-dia-da-pizza-cursos-cpt.jpg"
+              alt=""
+            />
+            <h4 class="nomeitem">Pizza calabresa</h4>
+            <div class="descricao">
+              Uma fatia p/ 1 pessoa
+            </div>
+            <div class="preco">
+              R$
+              <p class="valor">12,90</p>
+            </div>
+            <div class="check">
+              <ion-icon name="checkmark-outline"></ion-icon>
+            </div>
+          </div>
+
+          <div class="post" onclick="selecionarPrato(this), finalizarpedido()">
+            <img
+              src="data:image/jpeg;base64,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"
+              alt=""
+            />
+            <h4 class="nomeitem">Pastelão carne</h4>
+            <div class="descricao">
+              Pastel tamanho G, massa caseira
+            </div>
+            <div class="preco">
+              R$
+              <p class="valor">10,90</p>
+            </div>
+            <div class="check">
+              <ion-icon name="checkmark-outline"></ion-icon>
+            </div>
+          </div>
+
+          <div class="post" onclick="selecionarPrato(this), finalizarpedido()">
+            <img
+              src="https://img.estadao.com.br/fotos/crop/600x400/resources/jpg/3/5/1543524203153.jpg"
+              alt=""
+            />
+            <h4 class="nomeitem">Bauru</h4>
+            <div class="descricao">
+              Hambúrguer e <br />
+              batata frita
+            </div>
+            <div class="preco">
+              R$
+              <p class="valor">13,90</p>
+            </div>
+            <div class="check">
+              <ion-icon name="checkmark-outline"></ion-icon>
+            </div>
+          </div>
+        </nav>
+      </section>
+
+      <section>
+        <h2>
+          Agora, sua bebida
+        </h2>
+        <nav class="bebida">
+          <div class="post" onclick="selecionarBebida(this), finalizarpedido()">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2u1ukQCQ3bkMbmN7f0BGKXM5fzNKTrn3KEA&usqp=CAU"
+              alt=""
+            />
+            <h4 class="nomeitem">Coca-cola</h4>
+            <div class="descricao">
+              Refrigerante Coca-Cola 350ml
+            </div>
+            <div class="preco">
+              R$
+              <p class="valor">7,90</p>
+            </div>
+            <div class="check">
+              <ion-icon name="checkmark-outline"></ion-icon>
+            </div>
+          </div>
+
+          <div class="post" onclick="selecionarBebida(this), finalizarpedido()">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2u1ukQCQ3bkMbmN7f0BGKXM5fzNKTrn3KEA&usqp=CAU"
+              alt=""
+            />
+            <h4 class="nomeitem">Coca-cola</h4>
+            <div class="descricao">
+              Refrigerante Coca-Cola 1,5L
+            </div>
+            <div class="preco">
+              R$
+              <p class="valor">10,90</p>
+            </div>
+            <div class="check">
+              <ion-icon name="checkmark-outline"></ion-icon>
+            </div>
+          </div>
+
+          <div class="post" onclick="selecionarBebida(this), finalizarpedido()">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2u1ukQCQ3bkMbmN7f0BGKXM5fzNKTrn3KEA&usqp=CAU"
+              alt=""
+            />
+            <h4 class="nomeitem">Coca-cola</h4>
+            <div class="descricao">
+              Refrigerante Coca-Cola 2L
+            </div>
+            <div class="preco">
+              R$
+              <p class="valor">12,90</p>
+            </div>
+            <div class="check">
+              <ion-icon name="checkmark-outline"></ion-icon>
+            </div>
+          </div>
+
+          <div class="post" onclick="selecionarBebida(this), finalizarpedido()">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2u1ukQCQ3bkMbmN7f0BGKXM5fzNKTrn3KEA&usqp=CAU"
+              alt=""
+            />
+            <h4 class="nomeitem">Coca-cola</h4>
+            <div class="descricao">
+              Refrigerante Coca-Cola 3L
+            </div>
+            <div class="preco">
+              R$
+              <p class="valor">16,90</p>
+            </div>
+            <div class="check">
+              <ion-icon name="checkmark-outline"></ion-icon>
+            </div>
+          </div>
+        </nav>
+      </section>
+
+      <section>
+        <h2>
+          Por fim, sua sobremesa
+        </h2>
+        <nav class="sobremesa">
+          <div
+            class="post"
+            onclick="selecionarSobremesa(this), finalizarpedido()"
+          >
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjSQSXRSLqXTQLBdFzxsH7miVmU645O2-4MA&usqp=CAU"
+              alt=""
+            />
+            <h4 class="nomeitem">Mousse</h4>
+            <div class="descricao">
+              Maracujá p/ 1 pessoa
+            </div>
+            <div class="preco">
+              R$
+              <p class="valor">9,90</p>
+            </div>
+            <div class="check">
+              <ion-icon name="checkmark-outline"></ion-icon>
+            </div>
+          </div>
+
+          <div
+            class="post"
+            onclick="selecionarSobremesa(this), finalizarpedido()"
+          >
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjbVYFwwVPmk6FWbw0Sb0YtadCluk8T3y4HA&usqp=CAU"
+              alt=""
+            />
+            <h4 class="nomeitem">Bolo chocolate</h4>
+            <div class="descricao">
+              Bolo de pote p/ 1 pessoa
+            </div>
+            <div class="preco">
+              R$
+              <p class="valor">8,90</p>
+            </div>
+            <div class="check">
+              <ion-icon name="checkmark-outline"></ion-icon>
+            </div>
+          </div>
+
+          <div
+            class="post"
+            onclick="selecionarSobremesa(this), finalizarpedido()"
+          >
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5JZVv64gXIQk0e2btASI1unt1-H8aBZE3iQ&usqp=CAU"
+              alt=""
+            />
+            <h4 class="nomeitem">Beijinho</h4>
+            <div class="descricao">
+              Beijinho com 5 unidades
+            </div>
+            <div class="preco">
+              R$
+              <p class="valor">7,90</p>
+            </div>
+            <div class="check">
+              <ion-icon name="checkmark-outline"></ion-icon>
+            </div>
+          </div>
+
+          <div
+            class="post"
+            onclick="selecionarSobremesa(this), finalizarpedido()"
+          >
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyueIh1uj_jnLqR4n-YSsxWRI_Z5m_FfvBOg&usqp=CAU"
+              alt=""
+            />
+            <h4 class="nomeitem">Brownie</h4>
+            <div class="descricao">
+              chocolate p/ 1 pessoa
+            </div>
+            <div class="preco">
+              R$
+              <p class="valor">12,90</p>
+            </div>
+            <div class="check">
+              <ion-icon name="checkmark-outline"></ion-icon>
+            </div>
+          </div>
+        </nav>
+      </section>
+    </main>
+
+    <footer>
+      <div class="botao" onclick="confirmacaoPedido()">
+        <p>
+          Selecione os 3 itens <br />
+          para fechar o pedido
+        </p>
+      </div>
+    </footer>
+
+    <script src="java.js"></script>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+  </body>
+</html>
