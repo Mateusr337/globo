@@ -10,6 +10,8 @@ body{
 
 header {
     color: #75B79E;
+    font-size: 56px;
+    font-weight: bold;
 
     width: 100%;
 
@@ -17,7 +19,9 @@ header {
     margin-bottom: 40px;
 
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
+    text-align: center;
     align-items: center;
 }
 
@@ -29,7 +33,7 @@ main{
 
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
 }
 
@@ -53,6 +57,10 @@ section img {
 }
 
 @media (max-width: 335px){
+    header {
+        font-size: 36px;
+    }
+
     main {
         flex-direction: column;
     }
